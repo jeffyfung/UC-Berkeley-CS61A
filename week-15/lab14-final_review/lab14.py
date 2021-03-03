@@ -40,11 +40,11 @@ def num_splits(s, d):
     12
     """
     "*** YOUR CODE HERE ***"
-    if False: # base case
-        pass
-    else:
-        #return num_splits(s[0]
-        pass
+    def helper(lst, diff):
+        if len(lst) == 0:
+            return abs(diff) <= d
+        return helper(lst[1:], diff+lst[0]) + helper(lst[1:], diff-lst[0])
+    return helper(s, 0) // 2
 
 
 
@@ -172,15 +172,12 @@ def align_skeleton(skeleton, code):
         skel_char, code_char = skeleton[skeleton_idx], code[code_idx]
         # Match
         if skel_char == code_char:
-            #skeleton_idx, code_idx = skeleton_idx + 1, code_idx + 1
             match, cost = helper_align(skeleton_idx+1, code_idx+1)
             possibilities.append((str(skeleton[skeleton_idx]) + match, cost))
         # Insert
-#        if skeleton[skeleton_idx] == code[code_idx+1]:
         match, cost = helper_align(skeleton_idx, code_idx+1)
         possibilities.append(("+["+code[code_idx]+"]" + match, cost+1))
         # Delete
-        #if skeleton[skeleton_idx+1] == code[code_idx]:
         match, cost = helper_align(skeleton_idx+1, code_idx)
         possibilities.append(("-["+skeleton[skeleton_idx]+"]" + match, cost+1))
         return min(possibilities, key=lambda x: x[1])
@@ -201,7 +198,7 @@ def foldl(link, fn, z):
     if link is Link.empty:
         return z
     "*** YOUR CODE HERE ***"
-    return foldl(______, ______, ______)
+    return foldl(link.rest, fn, fn(z, link.first))
 
 
 def filterl(lst, pred):
@@ -211,6 +208,12 @@ def filterl(lst, pred):
     Link(4, Link(2))
     """
     "*** YOUR CODE HERE ***"
+    if lst == Link.empty:
+        return lst
+    elif not pred(lst.first):
+        return filterl(lst.rest, pred)
+    else:
+        return Link(lst.first, filterl(lst.rest, pred))
 
 
 def reverse(lst):
@@ -227,6 +230,8 @@ def reverse(lst):
 
 
 identity = lambda x: x
+
+# return foldl(link.rest, fn, fn(z, link.first))
 
 def foldl2(link, fn, z):
     """ Write foldl using foldr

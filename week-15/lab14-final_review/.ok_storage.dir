@@ -3,3 +3,6 @@
 'compose-all-correct', (1024, 70)
 'CheckingAccount-correct', (1536, 70)
 'align_skeleton-correct', (2048, 70)
+'foldl-correct', (2560, 70)
+'filterl-correct', (3072, 70)
+'num_splits-correct', (3584, 70)
