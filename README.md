@@ -1,8 +1,6 @@
-# UC-Berkeley-CS61A Fall 2020
+# UC-Berkeley-CS61A
 
-Self study of Structure and Interpretation of Computer Programs
-
-Course Website: https://inst.eecs.berkeley.edu/~cs61a/fa20/
+My solution to UC Berkeley's CS61A (fall 2020)
 
 Kudos to Professor John DeNero and Hany Farid who make the course available on the web for free!
 
